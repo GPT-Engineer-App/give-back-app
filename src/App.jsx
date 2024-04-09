@@ -3,6 +3,7 @@ import { Box, HStack } from "@chakra-ui/react";
 import Index from "./pages/Index.jsx";
 import OrganizationList from "./components/OrganizationList.jsx";
 import OrganizationSignUp from "./components/OrganizationSignUp.jsx";
+import OrganizationPackages from "./components/OrganizationPackages.jsx";
 
 function App() {
   return (
@@ -12,12 +13,14 @@ function App() {
           <Link to="/">Donate</Link>
           <Link to="/organizations">Organizations</Link>
           <Link to="/organizations/signup">Register Organization</Link>
+          <Link to="/organizations/packages">Manage Packages</Link>
         </HStack>
       </Box>
       <Routes>
         <Route exact path="/" element={<Index />} />
         <Route path="/organizations" element={<OrganizationList />} />
         <Route path="/organizations/signup" element={<OrganizationSignUp />} />
+        <Route path="/organizations/packages" element={<OrganizationPackages />} />
       </Routes>
     </Router>
   );
