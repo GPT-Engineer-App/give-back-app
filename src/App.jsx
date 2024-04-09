@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Route, BrowserRouter as Router, Routes, Link } from "react-router-dom";
 import { Box, HStack } from "@chakra-ui/react";
 import Index from "./pages/Index.jsx";
@@ -5,7 +6,14 @@ import OrganizationList from "./components/OrganizationList.jsx";
 import OrganizationSignUp from "./components/OrganizationSignUp.jsx";
 import OrganizationPackages from "./components/OrganizationPackages.jsx";
 
+import OrganizationSearch from "./components/OrganizationSearch.jsx";
+
 function App() {
+  const [searchParams, setSearchParams] = useState({});
+
+  const handleSearch = (params) => {
+    setSearchParams(params);
+  };
   return (
     <Router>
       <Box p={4}>
@@ -18,7 +26,15 @@ function App() {
       </Box>
       <Routes>
         <Route exact path="/" element={<Index />} />
-        <Route path="/organizations" element={<OrganizationList />} />
+        <Route
+          path="/organizations"
+          element={
+            <>
+              <OrganizationSearch onSearch={handleSearch} />
+              <OrganizationList searchParams={searchParams} />
+            </>
+          }
+        />
         <Route path="/organizations/signup" element={<OrganizationSignUp />} />
         <Route path="/organizations/packages" element={<OrganizationPackages />} />
       </Routes>

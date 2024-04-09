@@ -33,14 +33,23 @@ const organizations = [
   },
 ];
 
-const OrganizationList = () => {
+const OrganizationList = ({ searchParams }) => {
+  const filteredOrganizations = organizations.filter((org) => {
+    if (searchParams.geography && !org.geography.toLowerCase().includes(searchParams.geography.toLowerCase())) {
+      return false;
+    }
+    if (searchParams.type && org.type !== searchParams.type) {
+      return false;
+    }
+    return true;
+  });
   return (
     <Box p={8}>
       <VStack spacing={8} align="stretch">
         <Heading as="h1" size="2xl">
           Organizations
         </Heading>
-        {organizations.map((org) => (
+        {filteredOrganizations.map((org) => (
           <Box key={org.id} p={4} shadow="md" borderWidth="1px">
             <Heading as="h2" size="xl">
               {org.name}
