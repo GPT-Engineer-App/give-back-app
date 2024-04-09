@@ -35,13 +35,11 @@ const organizations = [
 
 const OrganizationList = ({ searchParams }) => {
   const filteredOrganizations = organizations.filter((org) => {
-    if (searchParams.geography && !org.geography.toLowerCase().includes(searchParams.geography.toLowerCase())) {
-      return false;
-    }
-    if (searchParams.type && org.type !== searchParams.type) {
-      return false;
-    }
-    return true;
+    return Object.entries(searchParams).every(([key, value]) => {
+      if (!value) return true;
+      if (!org[key]) return false;
+      return org[key].toLowerCase().includes(value.toLowerCase());
+    });
   });
   return (
     <Box p={8}>
