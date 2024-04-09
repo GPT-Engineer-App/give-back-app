@@ -2,6 +2,7 @@ import { Route, BrowserRouter as Router, Routes, Link } from "react-router-dom";
 import { Box, HStack } from "@chakra-ui/react";
 import Index from "./pages/Index.jsx";
 import OrganizationList from "./components/OrganizationList.jsx";
+import OrganizationSignUp from "./components/OrganizationSignUp.jsx";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Index />} />
         <Route path="/organizations" element={<OrganizationList />} />
+        <Route path="/signup/:org" element={<OrganizationSignUp />} />
       </Routes>
     </Router>
   );
