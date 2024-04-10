@@ -5,6 +5,7 @@ import Index from "./pages/Index.jsx";
 import OrganizationList from "./components/OrganizationList.jsx";
 import OrganizationSignUp from "./components/OrganizationSignUp.jsx";
 import OrganizationPackages from "./components/OrganizationPackages.jsx";
+import OrganizationAdmin from "./components/OrganizationAdmin.jsx";
 
 import OrganizationSearch from "./components/OrganizationSearch.jsx";
 
@@ -22,6 +23,7 @@ function App() {
           <Link to="/organizations">Organizations</Link>
           <Link to="/organizations/signup">Register Organization</Link>
           <Link to="/organizations/packages">Manage Packages</Link>
+          <Link to="/organizations/admin">Admin</Link>
         </HStack>
       </Box>
       <Routes>
@@ -37,6 +39,7 @@ function App() {
         />
         <Route path="/organizations/signup" element={<OrganizationSignUp />} />
         <Route path="/organizations/packages" element={<OrganizationPackages />} />
+        <Route path="/organizations/admin" element={<OrganizationAdmin />} />
       </Routes>
     </Router>
   );
